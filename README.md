@@ -56,7 +56,3 @@ The selected benchmark is indexed by `optimisation/results/benchmark_pointer.jso
 - Source and receiver UTC mappings diverged during clock corrections. Negative historical alert-duration fields are invalid timing evidence. The live PSI audit uses monotonic elapsed intervals.
 - Energy is a CPU-utilisation/TDP proxy. File bytes do not equal peak runtime memory.
 - Current HTTP transport is a private local demonstration. Authentication, encryption, production rollout security and target profiling remain proposed.
-
-## Submission artefacts
-
-This repository snapshot contains source code, model artefacts and saved software-pilot evidence from the supplied 4 November 2026 export. A clone does not include Docker images, image caches, named-volume databases or the original physical laptop.
