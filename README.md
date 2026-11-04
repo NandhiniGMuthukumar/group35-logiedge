@@ -1,5 +1,3 @@
-[README.md](https://github.com/user-attachments/files/34393280/README.md)
-
 # Group 35 LogiEdge
 
 LogiEdge is a Linux amd64 software prototype for the course cold-chain truck scenario. A local simulator publishes temperature, vibration RMS and door events. Mosquitto, shared preprocessing, a TFLite classifier and physical temperature rules support local detection. SQLite retains events and retries selected alerts/heartbeats to a separate operations service. The pilot and full-fleet hardware figures are projections, not actual installed trucks.
