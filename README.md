@@ -6,10 +6,10 @@ LogiEdge is a Linux amd64 software prototype for the course cold-chain truck sce
 
 | Member | Student ID |
 |---|---|
-| NANDHINI G | 2025AFO5070 |
-| GANESAN V | 2025ae05074 |
-| VINAYAK SHARMA | 2025ae05018 |
-| AHAMED IMTHIAS J | 2025ae05985 |
+| NANDHINI G | 2025AF05070 |
+| GANESAN V | 2025AE05074 |
+| VINAYAK SHARMA | 2025AE05018 |
+| AHAMED IMTHIAS J | 2025AE05985 |
 
 ## Verified results
 
@@ -17,20 +17,6 @@ The dataset has 291 six-feature windows: 223 training, 59 validation and nine pu
 
 The live P(Normal) PSI run 2291a861 recorded 242 actual model outputs, detected drift in 60.00 seconds and recovered to zero after 1079.00 seconds of clean restoration. Its audit reproduced all 24 full-window evaluations. The seven-task Ansible run changed five resources initially and zero on the unchanged repeat; container ID/start time stayed unchanged. A fresh post-deployment capture produced Normal and matching local/remote delivery counts of 72 with none pending.
 
-## Existing verified laptop
-
-Open Docker Desktop and wait for Engine running. In Ubuntu:
-
-```bash
-cd ~/logibridge
-bash deployment/start_demo_services.sh
-bash deployment/run_simulator.sh \
-  --anomaly none --duration 45 --seed 8001 --purpose live
-docker compose logs --tail 12 inference
-python3 demo/show_evidence.py status
-```
-
-The startup helper retains the Ansible override and named volumes. Do not restart services or deploy while a live PSI experiment is active.
 
 ## Reproduction on another Linux amd64 machine
 
@@ -74,7 +60,3 @@ The selected benchmark is indexed by `optimisation/results/benchmark_pointer.jso
 ## Submission artefacts
 
 This repository snapshot contains source code, model artefacts and saved software-pilot evidence from the supplied 4 November 2026 export. A clone does not include Docker images, image caches, named-volume databases or the original physical laptop.
-
-The group adds its reviewed final report as `reports/35_LogiEdge_Final.pdf` and its actual accessible demonstration URL as `demo/demo_video_link.txt` after recording. These two final artefacts are not present in the supplied source archives. The presentation is included under `demo/`.
-
-The final report contains the actual private repository URL and video URL. The instructor must have collaborator access. One member submits the common repository URL, the 15-20 minute video link and the final report PDF for Group 35.
