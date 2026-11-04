@@ -1,0 +1,80 @@
+---
+- name: Deploy the selected LogiEdge model and frozen PSI reference
+  hosts: edge
+  gather_facts: false
+  become: false
+  tasks:
+    - name: "1. Create /opt/logibridge if absent"
+      become: "{{ deployment_require_sudo | default(true) }}"
+      ansible.builtin.file:
+        path: "{{ deployment_directory }}"
+        state: directory
+        owner: "{{ deployment_owner_uid | string }}"
+        group: "{{ deployment_owner_gid | string }}"
+        mode: "0755"
+
+    - name: "2. Copy the selected model to model.tflite"
+      become: "{{ deployment_require_sudo | default(true) }}"
+      ansible.builtin.copy:
+        src: "{{ deployment_model_source }}"
+        dest: "{{ deployment_directory }}/model.tflite"
+        owner: "{{ deployment_owner_uid | string }}"
+        group: "{{ deployment_owner_gid | string }}"
+        mode: "0644"
+      register: deployed_model
+
+    - name: "3. Copy the matching frozen reference_dist.json"
+      become: "{{ deployment_require_sudo | default(true) }}"
+      ansible.builtin.copy:
+        src: "{{ deployment_reference_source }}"
+        dest: "{{ deployment_directory }}/reference_dist.json"
+        owner: "{{ deployment_owner_uid | string }}"
+        group: "{{ deployment_owner_gid | string }}"
+        mode: "0644"
+      register: deployed_reference
+
+    - name: "4. Stop running inference when the deployment needs an update"
+      ansible.builtin.command:
+        argv:
+          - "{{ ansible_python_interpreter }}"
+          - "{{ deployment_helper }}"
+          - stop
+          - --plan
+          - "{{ deployment_plan }}"
+          - --assets-changed
+          - "{{ (deployed_model.changed or deployed_reference.changed) | ternary('yes', 'no') }}"
+      register: stopped_inference
+      changed_when: (stopped_inference.stdout | from_json).changed
+
+    - name: "5. Pull the pinned image from the local registry"
+      ansible.builtin.command:
+        argv:
+          - "{{ ansible_python_interpreter }}"
+          - "{{ deployment_helper }}"
+          - pull
+          - --plan
+          - "{{ deployment_plan }}"
+      register: pulled_image
+      changed_when: (pulled_image.stdout | from_json).changed
+
+    - name: "6. Start inference with the deployment environment and volumes"
+      ansible.builtin.command:
+        argv:
+          - "{{ ansible_python_interpreter }}"
+          - "{{ deployment_helper }}"
+          - start
+          - --plan
+          - "{{ deployment_plan }}"
+      register: started_inference
+      changed_when: (started_inference.stdout | from_json).changed
+
+    - name: "7. Wait 15 seconds and verify running inference and artifact identities"
+      ansible.builtin.command:
+        argv:
+          - "{{ ansible_python_interpreter }}"
+          - "{{ deployment_helper }}"
+          - verify
+          - --plan
+          - "{{ deployment_plan }}"
+      register: verified_inference
+      changed_when: false

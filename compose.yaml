@@ -1,0 +1,96 @@
+name: logibridge
+services:
+  mqtt:
+    image: eclipse-mosquitto:2.0.22
+    container_name: logibridge-mqtt
+    restart: unless-stopped
+    volumes:
+      - ./deployment/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mqtt_data:/mosquitto/data
+    healthcheck:
+      test: ["CMD", "mosquitto_pub", "-h", "127.0.0.1", "-t", "logibridge/system/broker_health", "-m", "ok", "-q", "1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  simulator:
+    image: logibridge-simulator:0.2.0
+    build:
+      context: .
+      dockerfile: data_pipeline/Dockerfile
+    profiles: ["tools"]
+    network_mode: "service:mqtt"
+    depends_on:
+      mqtt:
+        condition: service_healthy
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    stop_grace_period: 10s
+  trainer:
+    image: logibridge-ml:0.1.0
+    build:
+      context: .
+      dockerfile: training/Dockerfile
+    profiles: ["tools"]
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stop_grace_period: 20s
+  operations:
+    image: logibridge-operations:0.1.0
+    build:
+      context: .
+      dockerfile: inference/Dockerfile.operations
+    container_name: logibridge-operations
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - operations_state:/state
+    ports:
+      - "127.0.0.1:${OPERATIONS_HOST_PORT:-18080}:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=2).read()"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+      start_period: 5s
+  inference:
+    image: logibridge-inference:0.1.0
+    build:
+      context: .
+      dockerfile: inference/Dockerfile
+    container_name: logibridge-inference
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    network_mode: "service:mqtt"
+    depends_on:
+      mqtt:
+        condition: service_healthy
+    volumes:
+      - edge_state:/state
+      - ./deployment/runtime_assets/models:/models:ro
+    environment:
+      TRUCK_ID: TRUCK_001
+      MQTT_HOST: localhost
+      MQTT_PORT: "1883"
+      MODEL_PATH: "${MODEL_PATH:-/app/model.tflite}"
+      OPERATIONS_URL: http://operations:8080/events
+    healthcheck:
+      test: ["CMD", "python", "-m", "inference.inspect_state", "--health"]
+      interval: 5s
+      timeout: 3s
+      retries: 8
+      start_period: 15s
+    stop_grace_period: 15s
+volumes:
+  mqtt_data:
+  edge_state:
+  operations_state:
