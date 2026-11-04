@@ -1,0 +1,21 @@
+{
+  "cpu_name": "13th Gen Intel(R) Core(TM) i5-13420H",
+  "host_logical_cpus": 12,
+  "physical_cores": 8,
+  "performance_cores": 4,
+  "efficient_cores": 4,
+  "tdp_estimate_w": 45,
+  "tdp_source": "https://www.intel.com/content/www/us/en/products/sku/232173/intel-core-i513420h-processor-12m-cache-up-to-4-60-ghz/specifications.html",
+  "tdp_basis": "Intel Processor Base Power (45 W), used as the documented TDP estimate for the CPU-utilization energy proxy.",
+  "intel_tdp_terminology_source": "https://www.intel.com/content/www/us/en/support/articles/000089297/processors.html",
+  "maximum_turbo_power_w": 115,
+  "verification_date": "2026-11-02",
+  "host_details_source": "Team's Windows PowerShell Get-CimInstance Win32_Processor output: i5-13420H, 8 cores, 12 logical processors.",
+  "energy_scope": "Estimated CPU-energy proxy; not measured electrical power or total laptop energy.",
+  "assumptions": [
+    "Scale 45 W linearly by Process.cpu_percent/(100*12).",
+    "Equal-capacity logical-CPU normalization is an approximation on this 4P+4E hybrid processor.",
+    "Idle power, SMT, turbo/DVFS, OEM power limits and virtualization are not explicitly modeled."
+  ]
+}
+

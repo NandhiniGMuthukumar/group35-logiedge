@@ -1,0 +1,117 @@
+{
+  "model": "M2 INT8 TFLite",
+  "sample_count": 59,
+  "same_validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774",
+  "statistics_shift": "mean+3*std; std unchanged; saved files untouched",
+  "correct_statistics": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true,
+    "prediction_rule": "argmax of raw dequantized INT8 softmax; no probability renormalization"
+  },
+  "shifted_statistics": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true,
+    "prediction_rule": "argmax of raw dequantized INT8 softmax; no probability renormalization"
+  },
+  "shifted_minus_correct_accuracy_pp": 0.0,
+  "shifted_input_output_audit": {
+    "input_scale": 3.2827117443084717,
+    "input_zero_point": -127,
+    "output_scale": 0.00390625,
+    "output_zero_point": -128,
+    "input_clipping": {
+      "representable_min": -3.2827117443084717,
+      "representable_max": 833.8087830543518,
+      "values_clipped_after_rounding": 39,
+      "rows_with_clipped_values": 39,
+      "clipped_values_per_feature": [
+        35,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "values_outside_representable_range": 99,
+      "total_values": 354,
+      "rounding": "nearest, ties to even; saturate to [-128, 127] before int8 cast"
+    },
+    "max_softmax_sum_error": 0.00390625
+  }
+}

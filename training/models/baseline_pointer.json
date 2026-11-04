@@ -1,0 +1,10 @@
+{
+  "run_dir": "training/models/baseline_20261102T165253Z_9f6488",
+  "keras_model": "training/models/baseline_20261102T165253Z_9f6488/model.keras",
+  "conditioned_model": "training/models/baseline_20261102T165253Z_9f6488/conditioned_model.keras",
+  "conditioning_scale": "training/models/baseline_20261102T165253Z_9f6488/conditioning_scale.npy",
+  "metrics_file": "training/models/baseline_20261102T165253Z_9f6488/metrics.json",
+  "fp32_model": "training/models/baseline_20261102T165253Z_9f6488/M1_FP32.tflite",
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251"
+}

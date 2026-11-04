@@ -1,0 +1,11 @@
+{
+  "deployment_directory": "/opt/logibridge",
+  "deployment_owner_uid": 1002,
+  "deployment_owner_gid": 1002,
+  "deployment_model_source": "/home/nandhini/logibridge/deployment/ansible/inputs/model.tflite",
+  "deployment_reference_source": "/home/nandhini/logibridge/deployment/ansible/inputs/reference_dist.json",
+  "deployment_helper": "/home/nandhini/logibridge/deployment/ansible_runtime.py",
+  "deployment_plan": "/home/nandhini/logibridge/deployment/ansible/plan.json",
+  "ansible_python_interpreter": "/home/nandhini/.local/share/logibridge-ansible/bin/python",
+  "deployment_require_sudo": true
+}

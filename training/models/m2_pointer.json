@@ -1,0 +1,9 @@
+{
+  "run_dir": "training/models/ptq_20261102T170433Z_cfa235",
+  "model_file": "training/models/ptq_20261102T170433Z_cfa235/M2_INT8.tflite",
+  "metrics_file": "training/models/ptq_20261102T170433Z_cfa235/metrics.json",
+  "model_sha256": "53f4c1a0de72befeac0e160b165d348668b2ef983180bfc7975485bd0cd41160",
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774"
+}

@@ -1,0 +1,2 @@
+source_run_id,source_anomaly,source_purpose,window_index,window_start_s,window_end_s,raw_support_start_s,temperature_samples,vibration_samples,door_state_at_end,temperature_mean,temperature_std,temperature_rate_c_per_min,vibration_rms,vibration_peak,vibration_kurtosis
+948bc882d8c947e1906bf5ba817ae52b,combined,smoke_test,0,10.0,40.0,2.000716209411621,30,15,CLOSE,5.929380666666665,0.6684408006594317,4.536255127182096,1.210746557833912,1.3062799999999999,-1.2719831096990122

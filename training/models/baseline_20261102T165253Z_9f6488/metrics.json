@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774",
+  "feature_names": [
+    "temperature_mean",
+    "temperature_std",
+    "temperature_rate_c_per_min",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_kurtosis"
+  ],
+  "architecture": [
+    6,
+    32,
+    16,
+    3
+  ],
+  "parameter_count": 803,
+  "training_rows": 223,
+  "validation_rows": 59,
+  "seed": 2026,
+  "epochs_requested": 400,
+  "epochs_completed": 400,
+  "best_training_epoch": 400,
+  "learning_rate": 0.003,
+  "batch_size": 16,
+  "weight_selection": "training loss only; held-out validation not passed to fit",
+  "conditioning": {
+    "source": "training rows only",
+    "scales": [
+      834.6299438476562,
+      30.070720672607422,
+      16.07581901550293,
+      65.57389831542969,
+      58.33942413330078,
+      8.499993324279785
+    ],
+    "folded_into_first_dense_kernel": true,
+    "max_training_probability_error": 4.547473508864641e-12
+  },
+  "label_note": "Scenario labels follow the D1 table. The unbounded temp_drift scenario exceeds the physical Critical temperature threshold during much of its run. Scenario labels are not a substitute for operational temperature severity.",
+  "keras": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true
+  },
+  "keras_mean_shift_3sigma": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true
+  },
+  "fp32_tflite": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true,
+    "model_file": "training/models/baseline_20261102T165253Z_9f6488/M1_FP32.tflite",
+    "model_sha256": "332d4342517f3ce646f1be716436501128cdf13547458c72f862553b2b24b15b",
+    "model_size_bytes": 5416,
+    "input_dtype": "float32",
+    "output_dtype": "float32"
+  },
+  "dataset_and_statistics_unchanged": true
+}

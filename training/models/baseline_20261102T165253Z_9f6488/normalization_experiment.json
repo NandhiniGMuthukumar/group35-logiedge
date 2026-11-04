@@ -1,0 +1,91 @@
+{
+  "model": "M1 FP32 TFLite",
+  "same_validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774",
+  "sample_count": 59,
+  "statistics_shift": "mean+3*std; std unchanged; saved files untouched",
+  "correct_statistics": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true
+  },
+  "shifted_statistics": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true
+  },
+  "shifted_minus_correct_accuracy_pp": 0.0
+}

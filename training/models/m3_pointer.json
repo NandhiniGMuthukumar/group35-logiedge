@@ -1,0 +1,9 @@
+{
+  "run_dir": "training/models/structured_20261102T171917Z_3c7e14",
+  "model_file": "training/models/structured_20261102T171917Z_3c7e14/M3_STRUCTURED_INT8.tflite",
+  "model_sha256": "d3d3d78ad6ebcd5400ab03a083e9af3bf87f29715546f1da84377e8bfa685125",
+  "metrics_file": "training/models/structured_20261102T171917Z_3c7e14/metrics.json",
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774"
+}

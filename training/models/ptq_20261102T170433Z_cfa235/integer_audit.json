@@ -1,0 +1,220 @@
+{
+  "integer_only_verified": true,
+  "float_tensor_count": 0,
+  "tensor_types": [
+    "INT32",
+    "INT8"
+  ],
+  "input": {
+    "index": 0,
+    "name": "serving_default_features:0",
+    "dtype": "INT8",
+    "shape": [
+      1,
+      6
+    ],
+    "scales": [
+      3.2827117443084717
+    ],
+    "zero_points": [
+      -127
+    ]
+  },
+  "output": {
+    "index": 10,
+    "name": "StatefulPartitionedCall:0",
+    "dtype": "INT8",
+    "shape": [
+      1,
+      3
+    ],
+    "scales": [
+      0.00390625
+    ],
+    "zero_points": [
+      -128
+    ]
+  },
+  "operators": [
+    {
+      "name": "FULLY_CONNECTED",
+      "version": 4
+    },
+    {
+      "name": "FULLY_CONNECTED",
+      "version": 4
+    },
+    {
+      "name": "FULLY_CONNECTED",
+      "version": 4
+    },
+    {
+      "name": "SOFTMAX",
+      "version": 2
+    }
+  ],
+  "tensors": [
+    {
+      "index": 0,
+      "name": "serving_default_features:0",
+      "dtype": "INT8",
+      "shape": [
+        1,
+        6
+      ],
+      "scales": [
+        3.2827117443084717
+      ],
+      "zero_points": [
+        -127
+      ]
+    },
+    {
+      "index": 1,
+      "name": "logibridge_mlp/probabilities/BiasAdd/ReadVariableOp",
+      "dtype": "INT32",
+      "shape": [
+        3
+      ],
+      "scales": [
+        0.00025859943707473576
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 2,
+      "name": "logibridge_mlp/probabilities/MatMul",
+      "dtype": "INT8",
+      "shape": [
+        3,
+        16
+      ],
+      "scales": [
+        0.008356261067092419
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 3,
+      "name": "logibridge_mlp/hidden_2/BiasAdd/ReadVariableOp",
+      "dtype": "INT32",
+      "shape": [
+        16
+      ],
+      "scales": [
+        0.0001759623846737668
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 4,
+      "name": "logibridge_mlp/hidden_2/MatMul",
+      "dtype": "INT8",
+      "shape": [
+        16,
+        32
+      ],
+      "scales": [
+        0.024063872173428535
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 5,
+      "name": "logibridge_mlp/hidden_1/BiasAdd/ReadVariableOp",
+      "dtype": "INT32",
+      "shape": [
+        32
+      ],
+      "scales": [
+        0.001195917371660471
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 6,
+      "name": "logibridge_mlp/hidden_1/MatMul",
+      "dtype": "INT8",
+      "shape": [
+        32,
+        6
+      ],
+      "scales": [
+        0.0003643077507149428
+      ],
+      "zero_points": [
+        0
+      ]
+    },
+    {
+      "index": 7,
+      "name": "logibridge_mlp/hidden_1/MatMul;logibridge_mlp/hidden_1/Relu;logibridge_mlp/hidden_1/BiasAdd",
+      "dtype": "INT8",
+      "shape": [
+        1,
+        32
+      ],
+      "scales": [
+        0.007312305271625519
+      ],
+      "zero_points": [
+        -128
+      ]
+    },
+    {
+      "index": 8,
+      "name": "logibridge_mlp/hidden_2/MatMul;logibridge_mlp/hidden_2/Relu;logibridge_mlp/hidden_2/BiasAdd",
+      "dtype": "INT8",
+      "shape": [
+        1,
+        16
+      ],
+      "scales": [
+        0.03094678930938244
+      ],
+      "zero_points": [
+        -128
+      ]
+    },
+    {
+      "index": 9,
+      "name": "logibridge_mlp/probabilities/MatMul;logibridge_mlp/probabilities/BiasAdd",
+      "dtype": "INT8",
+      "shape": [
+        1,
+        3
+      ],
+      "scales": [
+        0.08060835301876068
+      ],
+      "zero_points": [
+        -31
+      ]
+    },
+    {
+      "index": 10,
+      "name": "StatefulPartitionedCall:0",
+      "dtype": "INT8",
+      "shape": [
+        1,
+        3
+      ],
+      "scales": [
+        0.00390625
+      ],
+      "zero_points": [
+        -128
+      ]
+    }
+  ]
+}

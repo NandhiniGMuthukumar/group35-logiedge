@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "sample_count": 300,
+  "bin_edges": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "last_bin_right_inclusive": true,
+  "smoothing": {
+    "epsilon": 1e-06,
+    "method": "floor proportions, then renormalise"
+  },
+  "primary_score": "normality_confidence=P(Normal)",
+  "diagnostic_score": "max_class_confidence=max(P(Normal),P(Warning),P(Critical))",
+  "primary_distribution": {
+    "counts": [
+      0,
+      0,
+      0,
+      300
+    ],
+    "proportions": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "smoothed_proportions": [
+      9.99997000009e-07,
+      9.99997000009e-07,
+      9.99997000009e-07,
+      0.999997000009
+    ]
+  },
+  "max_confidence_distribution": {
+    "counts": [
+      0,
+      0,
+      0,
+      300
+    ],
+    "proportions": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "smoothed_proportions": [
+      9.99997000009e-07,
+      9.99997000009e-07,
+      9.99997000009e-07,
+      0.999997000009
+    ]
+  },
+  "created_utc": "2026-11-03T11:50:32.779132+00:00",
+  "model_variant": "M1_FP32",
+  "model_sha256": "332d4342517f3ce646f1be716436501128cdf13547458c72f862553b2b24b15b",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "normalization_metadata_sha256": "a17f2134deee5ee0aa5e67153386e75ab6821f5433e815145e9edfe21522af19",
+  "truck_id": "TRUCK_001",
+  "feature_names": [
+    "temperature_mean",
+    "temperature_std",
+    "temperature_rate_c_per_min",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_kurtosis"
+  ],
+  "recipe": {
+    "version": "c2-v1",
+    "moving_average_samples": 5,
+    "filter_warmup": "discard until five real samples per stream",
+    "window_seconds": 30,
+    "step_seconds": 10,
+    "window_interval": "start inclusive, end exclusive",
+    "temperature_std": "population, ddof=0",
+    "temperature_rate": "OLS slope against actual timestamps, multiplied by 60",
+    "vibration_rms": "sqrt(mean(smoothed vibration_rms squared))",
+    "vibration_peak": "max(abs(smoothed vibration_rms))",
+    "vibration_kurtosis": "Fisher excess, population central moments",
+    "constant_vibration_kurtosis": 0.0
+  },
+  "clean_scenario_predicted_class_counts": {
+    "0": 300
+  },
+  "source": {
+    "execution_mode": "offline_nominal_timestamp_replay",
+    "truth": "Normal scenario; independently seeded from training and normalisation",
+    "seed": 7001,
+    "logical_sensor_duration_s": 3035,
+    "window_count": 300,
+    "first_window_end_s": 40.0,
+    "last_window_end_s": 3030.0,
+    "artifacts": [
+      {
+        "path": "monitoring/reference_runs/20261103T115032Z_79b90a84/reference_raw.jsonl",
+        "sha256": "adc93a21a2b9f2ea9e5ad776adb0b8e2f515c4edc4e569f05a47f4d92dd09f5d"
+      },
+      {
+        "path": "monitoring/reference_runs/20261103T115032Z_79b90a84/reference_inferences.jsonl",
+        "sha256": "1e440f7cf801f3923ca5088a877264ad01a889175cf7ac733fc7ba8346c9d785"
+      },
+      {
+        "path": "monitoring/reference_runs/20261103T115032Z_79b90a84/reference_features.csv",
+        "sha256": "03a16b5bf4be56c67b2d79818fb914875fb1008edd108f54cb8f57951a5d4c05"
+      }
+    ]
+  },
+  "reference_sha256": "217a8a4b21f4969b506927dcfb6958a131cb76f62ac0548e97aa34037c64dad3"
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "variant": "M2 PTQ full signed INT8",
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "validation_indices_sha256": "b473eb60edb0c05b396fdecc8926fc881ea3b88a62a247c28cc71a72a9fd6774",
+  "feature_names": [
+    "temperature_mean",
+    "temperature_std",
+    "temperature_rate_c_per_min",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_kurtosis"
+  ],
+  "label_note": "Scenario labels follow the D1 table. The unbounded temp_drift scenario exceeds the physical Critical temperature threshold during much of its run. Scenario labels are not a substitute for operational temperature severity.",
+  "architecture": [
+    6,
+    32,
+    16,
+    3
+  ],
+  "parameter_count_before_quantization": 803,
+  "model_file": "training/models/ptq_20261102T170433Z_cfa235/M2_INT8.tflite",
+  "model_sha256": "53f4c1a0de72befeac0e160b165d348668b2ef983180bfc7975485bd0cd41160",
+  "model_size_bytes": 3552,
+  "model_size_KB_decimal": 3.552,
+  "fp32_size_bytes": 5416,
+  "size_reduction_percent": 34.416543574593796,
+  "same_validation_fp32": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true
+  },
+  "int8": {
+    "sample_count": 59,
+    "correct_count": 59,
+    "accuracy_percent": 100.0,
+    "confusion_matrix": [
+      [
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "confusion_matrix_convention": "rows=true, columns=predicted",
+    "class_names": [
+      "Normal",
+      "Warning",
+      "Critical"
+    ],
+    "class_support": [
+      24,
+      18,
+      17
+    ],
+    "recall_percent": [
+      100.0,
+      100.0,
+      100.0
+    ],
+    "critical_support": 17,
+    "critical_recall_percent": 100.0,
+    "accuracy_requirement_met": true,
+    "critical_recall_requirement_met": true,
+    "prediction_rule": "argmax of raw dequantized INT8 softmax; no probability renormalization"
+  },
+  "int8_minus_fp32_accuracy_pp": 0.0,
+  "integer_only_verified": true,
+  "calibration_sample_count": 223,
+  "calibration_manifest": "training/models/ptq_20261102T170433Z_cfa235/calibration_manifest.json",
+  "input_output_audit": {
+    "input_scale": 3.2827117443084717,
+    "input_zero_point": -127,
+    "output_scale": 0.00390625,
+    "output_zero_point": -128,
+    "input_clipping": {
+      "representable_min": -3.2827117443084717,
+      "representable_max": 833.8087830543518,
+      "values_clipped_after_rounding": 35,
+      "rows_with_clipped_values": 35,
+      "clipped_values_per_feature": [
+        35,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "values_outside_representable_range": 35,
+      "total_values": 354,
+      "rounding": "nearest, ties to even; saturate to [-128, 127] before int8 cast"
+    },
+    "max_softmax_sum_error": 0.00390625
+  },
+  "keras_to_fp32_max_probability_error": 1.7881393432617188e-07,
+  "m1_source_hashes": {
+    "training/models/baseline_20261102T165253Z_9f6488/metrics.json": "766e993b80b68c4a1590bf658fa16fb945f3b545bac12487cffe4f688afae898",
+    "training/models/baseline_20261102T165253Z_9f6488/model.keras": "293071f68567af4dd95b2facbe25be7a72638e7f4cc3b8b186f3228110f4bd99",
+    "training/models/baseline_20261102T165253Z_9f6488/M1_FP32.tflite": "332d4342517f3ce646f1be716436501128cdf13547458c72f862553b2b24b15b"
+  },
+  "source_files_unchanged": true
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-02T13:24:09.902072+00:00",
+  "stats_rows": [
+    "mean",
+    "std"
+  ],
+  "feature_names": [
+    "temperature_mean",
+    "temperature_std",
+    "temperature_rate_c_per_min",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_kurtosis"
+  ],
+  "feature_units": [
+    "degC",
+    "degC",
+    "degC/min",
+    "g",
+    "g",
+    "dimensionless"
+  ],
+  "recipe": {
+    "version": "c2-v1",
+    "moving_average_samples": 5,
+    "filter_warmup": "discard until five real samples per stream",
+    "window_seconds": 30,
+    "step_seconds": 10,
+    "window_interval": "start inclusive, end exclusive",
+    "temperature_std": "population, ddof=0",
+    "temperature_rate": "OLS slope against actual timestamps, multiplied by 60",
+    "vibration_rms": "sqrt(mean(smoothed vibration_rms squared))",
+    "vibration_peak": "max(abs(smoothed vibration_rms))",
+    "vibration_kurtosis": "Fisher excess, population central moments",
+    "constant_vibration_kurtosis": 0.0
+  },
+  "std_ddof": 0,
+  "std_floor": 1e-08,
+  "raw_std": [
+    0.06553330704644883,
+    0.023668911538829437,
+    0.35798477671579854,
+    0.012888126512306508,
+    0.01664171581050198,
+    0.43329296747208385
+  ],
+  "floored_features": [],
+  "source_manifest": "data/raw/sensor_none_20261102T131214Z_7f19222e.manifest.json",
+  "source_manifest_sha256": "bf57305aca2af65458130d61f9589de0f0bcedcddaa441693ff1d388b8cc96fb",
+  "source_capture": "data/raw/sensor_none_20261102T131214Z_7f19222e.jsonl",
+  "source_capture_sha256": "d3a402fa29494fd9d10eeb43b9ade28d3e61fa09e3b6aee523adc8f554e20225",
+  "source_run_id": "7f19222e5af3474a946a2cf088634c2b",
+  "source_seed": 1001,
+  "source_purpose": "normalization",
+  "source_anomaly": "none",
+  "source_duration_s": 600.00112,
+  "source_feature_npy": "data/processed/sensor_none_20261102T131214Z_7f19222e.features.npy",
+  "source_feature_npy_sha256": "6666fc9029e4b66733abd3dc1e374f7a287250137fa65a5d45d0492c03594094",
+  "window_count": 57,
+  "feature_input_dtype": "float32",
+  "statistics_dtype": "float64",
+  "stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251"
+}

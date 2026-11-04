@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-02T14:48:36.626301+00:00",
+  "feature_names": [
+    "temperature_mean",
+    "temperature_std",
+    "temperature_rate_c_per_min",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_kurtosis"
+  ],
+  "recipe": {
+    "version": "c2-v1",
+    "moving_average_samples": 5,
+    "filter_warmup": "discard until five real samples per stream",
+    "window_seconds": 30,
+    "step_seconds": 10,
+    "window_interval": "start inclusive, end exclusive",
+    "temperature_std": "population, ddof=0",
+    "temperature_rate": "OLS slope against actual timestamps, multiplied by 60",
+    "vibration_rms": "sqrt(mean(smoothed vibration_rms squared))",
+    "vibration_peak": "max(abs(smoothed vibration_rms))",
+    "vibration_kurtosis": "Fisher excess, population central moments",
+    "constant_vibration_kurtosis": 0.0
+  },
+  "label_note": "Scenario labels follow the D1 table. The unbounded temp_drift scenario exceeds the physical Critical temperature threshold during much of its run. Scenario labels are not a substitute for operational temperature severity.",
+  "sources": [
+    {
+      "mode": "none",
+      "manifest": "data/raw/sensor_none_20261102T134634Z_49734d3c.manifest.json",
+      "manifest_sha256": "fa70b19540c35238591101e93cdc1217ce3e5d2ac453bde2c0e768c22c0288ba",
+      "capture_sha256": "5f64bebd82da0c8584ae77a6e3f374a6b3e349a64a4303e9f2787679cb7dd1d6"
+    },
+    {
+      "mode": "temp_drift",
+      "manifest": "data/raw/sensor_temp_drift_20261102T140657Z_357c82ee.manifest.json",
+      "manifest_sha256": "50ea75a1bbbf2cfca185116153ef2a29a1bf646a103f4b08f365c89e24798da5",
+      "capture_sha256": "f26ce499fd082aa850f6fbaeee91db2f843e893d6f3bb17f7c8201d61ea9c12b"
+    },
+    {
+      "mode": "combined",
+      "manifest": "data/raw/sensor_combined_20261102T142959Z_81439a02.manifest.json",
+      "manifest_sha256": "b6d9c14459287740107cefef0a819bdef5a7df1ee8517dff1b763b959d8613f1",
+      "capture_sha256": "1f744316e94950c2748b92ca41dfbdcf73a8b6018ba504bd2997d17a0d3e288f"
+    }
+  ],
+  "normalization_stats_file": "data_pipeline/training_stats.npy",
+  "normalization_stats_sha256": "e96f950a1d222bd0087084c119b8545a29f96c600699ab70601c2663569ff251",
+  "normalization_source_run_id": "7f19222e5af3474a946a2cf088634c2b",
+  "normalization_source_seed": 1001,
+  "total_windows": 291,
+  "training_windows": 223,
+  "validation_windows": 59,
+  "purged_windows": 9,
+  "requested_validation_fraction": 0.2,
+  "actual_validation_fraction_before_purge": 0.2027491408934708,
+  "split_method": "chronological tail per scenario; purge overlapping raw-sample support",
+  "per_class": [
+    {
+      "mode": "none",
+      "label": 0,
+      "name": "Normal",
+      "total": 117,
+      "training": 90,
+      "validation": 24,
+      "purged": 3
+    },
+    {
+      "mode": "temp_drift",
+      "label": 1,
+      "name": "Warning",
+      "total": 87,
+      "training": 66,
+      "validation": 18,
+      "purged": 3
+    },
+    {
+      "mode": "combined",
+      "label": 2,
+      "name": "Critical",
+      "total": 87,
+      "training": 67,
+      "validation": 17,
+      "purged": 3
+    }
+  ],
+  "dataset_sha256": "a905545a17f88a240dddc4313a26f15f1668b59b791bc63749e805acbafd7034",
+  "windows_csv_sha256": "4bc868250f1ca707fbf3637d417c7ce09cc35428bbad8650a33f8bea84c8d5db",
+  "calibration_eligible_training_windows": 223
+}
